@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HttpPost2:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HttpPost2_jar</output-path>
+    <root id="archive" name="HttpPost2.jar">
+      <element id="module-output" name="HttpPost2" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/okio-1.11.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/okhttp-3.2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/okhttp-3.5.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
