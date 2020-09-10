@@ -8,5 +8,7 @@
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="libs" level="project" />
+    <orderEntry type="library" name="okhttp-3.5.0" level="project" />
+    <orderEntry type="library" name="okio-1.11.0" level="project" />
   </component>
 </module>

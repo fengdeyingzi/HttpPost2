@@ -53,6 +53,7 @@ public class OConnect {
     private static String ua = "Dalvik/1.6.0 (Linux; U; Android 4.4.4; MI 4LTE MIUI/V6.6.2.0.KXDCNCF)";
     private HashMap<String, String> fileMap;
     private HashMap<String, String> postMap;
+    private String postInfo;
     private HashMap<String, String> getMap;
     private HashMap<String,String> headMap;
     private boolean isJsonPost;
@@ -77,6 +78,7 @@ public class OConnect {
                 if (ii.length == 2)
                     postMap.put(ii[0], ii[1]);
             }
+            this.postInfo = param;
         }
         this.handler = new Handler(Looper.getMainLooper()) {
             public void handleMessage(android.os.Message msg) {
@@ -207,7 +209,16 @@ public class OConnect {
             }
             request.post(bodyBuiler.build());
 
-        } else if (!postMap.isEmpty()) { //处理post
+        }
+        else if(postInfo != null){
+            String contentType = "application/json; charset=utf-8";
+            if(!isJsonPost){
+contentType = "application/x-www-form-urlencoded; charset=utf-8";
+            }
+            RequestBody body_json = RequestBody.create(MediaType.parse(contentType), postInfo);
+            request.post(body_json);
+        }
+        else if (!postMap.isEmpty()) { //处理post
             FormBody.Builder bodyBuilder = new FormBody.Builder();
             RequestBody body_json = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), postInfo());
             Iterator iterator = postMap.entrySet().iterator();
@@ -218,6 +229,7 @@ public class OConnect {
                 if (value == null) continue;
                 bodyBuilder.add(key, value);
             }
+            request.post(body_json);
             if(isJsonPost){
                 request.post(body_json);
             }

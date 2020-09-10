@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +28,10 @@ public class Main extends Application {
 
     protected TextArea text_retext;
 
+    protected Button btn_jsoncon;
+
+    protected CheckBox check_json;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -38,6 +43,8 @@ public class Main extends Application {
         input_post.setWrapText(true);
         btn_get = (Button)root.lookup("#btn_get");
         text_retext = (TextArea)root.lookup("#text_retext");
+        btn_jsoncon = (Button)root.lookup("#btn_jsoncon");
+        check_json = (CheckBox)root.lookup("#check_json");
         btn_get.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -62,9 +69,21 @@ public class Main extends Application {
                         System.out.println("获取数据成功");
                     }
                 });
+                if(check_json.isSelected())
+                connect.setJSONPost(true,false);
                 connect.start();
             }
         });
+
+        btn_jsoncon.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                String text = text_retext.getText();
+                text = JsonFormat.formatJson(text);
+                text_retext.setText(text);
+            }
+        });
+
 
     }
 

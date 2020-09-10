@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -19,11 +21,27 @@
                   <Button id="btn_get" mnemonicParsing="false" text="获取数据" />
                </children>
             </HBox>
-            <TextArea id="input_post" maxHeight="60.0" prefHeight="68.0" prefWidth="600.0" promptText="请输入post数据 可留空"/>
+            <TextArea id="input_post" maxHeight="60.0" prefHeight="68.0" prefWidth="600.0" promptText="请输入post数据 可留空" />
          </children>
       </VBox>
    </top>
    <center>
       <TextArea id="text_retext" prefHeight="198.0" prefWidth="600.0" promptText="返回数据" BorderPane.alignment="CENTER" />
    </center>
+   <bottom>
+      <HBox alignment="CENTER" maxHeight="30.0" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <CheckBox id="check_json" minWidth="100.0" mnemonicParsing="false" text="json格式">
+               <HBox.margin>
+                  <Insets right="8.0" />
+               </HBox.margin>
+            </CheckBox>
+            <Box width="200.0" HBox.hgrow="ALWAYS" />
+            <Button id="btn_jsoncon" maxWidth="1096.0" minWidth="100.0" mnemonicParsing="false" prefWidth="320.0" text="json格式化" />
+         </children>
+         <padding>
+            <Insets left="8.0" right="8.0" />
+         </padding>
+      </HBox>
+   </bottom>
 </BorderPane>
