@@ -34,7 +34,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample_new.fxml"));
         primaryStage.setTitle("HttpPost2 - 风的影子");
         primaryStage.setScene(new Scene(root, 640, 640));
         primaryStage.show();
@@ -58,6 +58,9 @@ public class Main extends Application {
                 if(url.length()==0 || url.equals("http://")){
                     url = parseUrl(param);
                     param = parseParams(param);
+                }
+                if(url.length()==0){
+                    text_retext.setText("url 获取失败");
                 }
                 OConnect connect = new OConnect(url, param, new OConnect.PostGetInfoListener() {
                     @Override
@@ -115,6 +118,7 @@ public class Main extends Application {
         String url = "";
         String params = "";
         String[] items = text.split(" ");
+
         if(items.length>=3){
             if(items[0].equals("-->")){
                 if(items[1].equals("GET")){
@@ -122,7 +126,12 @@ public class Main extends Application {
                 }
                 else if(items[1].equals("POST")){
                     url = items[2];
-                    params = items[3];
+                    for(int i=3;i<items.length;i++){
+                        params+= items[i];
+                        if(i!=items.length-1){
+                            params+= " ";
+                        }
+                    }
                 }
                 else{
                     System.out.println("未知数据");

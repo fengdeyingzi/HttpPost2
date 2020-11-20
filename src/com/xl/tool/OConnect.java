@@ -63,7 +63,7 @@ public class OConnect {
 
     //创建post请求
     public OConnect(String url, String param, final PostGetInfoListener listener) {
-
+        System.out.println("OConnect url="+url+" param="+param);
         this.postMap = new HashMap<String, String>();
         this.fileMap = new HashMap<String, String>();
         this.getMap = new HashMap<String, String>();
